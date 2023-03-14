@@ -15,7 +15,7 @@ app.post("/api/post/netplan", (req, res) => {
   let { elevpool, subnet, address, gateway, nameserver, searchdomain } =
     req.body;
   
-  searchdomain = searchdomain.toLower();
+  searchdomain = searchdomain.toLowerCase();
   let message = "";
   let successMessage = "";
 
@@ -53,7 +53,7 @@ app.post("/api/post/netplan", (req, res) => {
     Address: ${address} <br> 
     Gateway: ${gateway} <br> 
     Name server: ${nameserver} <br> 
-    Search domain: ${searchdomain.toLower()} <br> 
+    Search domain: ${searchdomain.toLowerCase()} <br> 
     `;
     res.send(successMessage);
   } else {
