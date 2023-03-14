@@ -25,12 +25,7 @@ app.post("/api/post/netplan", (req, res) => {
     message += "this didnt work, gateway <br>";
   }
 
-  if (
-    nameserver !== `1.1.1.1` &&
-    nameserver !== `8.8.8.8` &&
-    nameserver !== `1.1.1.1,8.8.8.8` &&
-    nameserver !== `1.1.1.1, 8.8.8.8`
-  ) {
+  if (nameserver.includes(`1.1.1.1`) ||nameserver.includes(`8.8.8.8`) || nameserver.includes(`10.10.1.30`)) {
     message += "this didnt work, nameserver <br>";
   }
 
@@ -42,10 +37,7 @@ app.post("/api/post/netplan", (req, res) => {
     subnet === `10.12.${elevpool}.0/24` &&
     address.includes(`10.12.${elevpool}`) &&
     gateway === `10.12.${elevpool}.1` &&
-    (nameserver === `1.1.1.1` ||
-      nameserver === `8.8.8.8` ||
-      nameserver === `1.1.1.1,8.8.8.8` ||
-      nameserver === `1.1.1.1, 8.8.8.8`) &&
+    (nameserver.includes(`1.1.1.1`) ||nameserver.includes(`8.8.8.8`) || nameserver.includes(`10.10.1.30`)) &&
     searchdomain.includes(`ikt-fag.no`)
   ) {
     successMessage += `Woho, this works <br> 
