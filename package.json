@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "nodemon": "^2.0.21"
+  },
+  "name": "netplan",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monhelle/Netplan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monhelle/Netplan/issues"
+  },
+  "homepage": "https://github.com/monhelle/Netplan#readme",
+  "description": ""
+}

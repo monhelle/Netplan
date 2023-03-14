@@ -1,0 +1,64 @@
+:root {
+  --background: #041d20;
+}
+
+html {
+  background-color: var(--background);
+  /* background-color: black */
+}
+
+h1 {
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  text-align: center;
+  color: red;
+}
+
+.ipv4 {
+  color: white;
+  margin-left: 200px;
+}
+
+p {
+  color: white;
+}
+
+label {
+  color: white;
+  display: inline-block;
+  padding-top: 10px;
+}
+
+form {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+input {
+  margin-left: 10px;
+}
+
+#elevpool, #gateway {
+  /* display: inline-block; */
+  margin-left: 42px;
+}
+
+#elevpool {
+  width: 40px;
+}
+
+#subnet {
+  margin-left: 55px;
+}
+
+#address {
+  margin-left: 47px;
+}
+
+button {
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+
+
