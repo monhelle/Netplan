@@ -15,6 +15,7 @@ app.post("/api/post/netplan", (req, res) => {
   let { elevpool, subnet, address, gateway, nameserver, searchdomain } =
     req.body;
   let message = "";
+  let successMessage = "";
 
   if (!address.includes(`10.12.${elevpool}`)) {
     message += "this didnt work, address <br>";
@@ -47,7 +48,14 @@ app.post("/api/post/netplan", (req, res) => {
       nameserver === `1.1.1.1, 8.8.8.8`) &&
     searchdomain.includes(`ikt-fag.no`)
   ) {
-    console.log("wohooo all works");
+    successMessage += `Woho, this works <br> 
+    Subnet: ${subnet} <br> 
+    Address: ${address} <br> 
+    Gateway: ${gateway} <br> 
+    Nameserver: ${nameserver} <br> 
+    SearchDomain: ${searchdomain} <br> 
+    `
+    res.send(successMessage)
   } else {
     console.log("this didnt work, redo");
     res.send(message);
