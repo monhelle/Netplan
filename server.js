@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
 app.post("/api/post/netplan", (req, res) => {
   let { elevpool, subnet, address, gateway, nameserver, searchdomain } =
     req.body;
+  
+  searchdomain = searchdomain.toLower();
   let message = "";
   let successMessage = "";
 
@@ -25,7 +27,11 @@ app.post("/api/post/netplan", (req, res) => {
     message += "this didnt work, gateway <br>";
   }
 
-  if (nameserver.includes(`1.1.1.1`) ||nameserver.includes(`8.8.8.8`) || nameserver.includes(`10.10.1.30`)) {
+  if (
+    !nameserver.includes(`1.1.1.1`) ||
+    !nameserver.includes(`8.8.8.8`) ||
+    !nameserver.includes(`10.10.1.30`)
+  ) {
     message += "this didnt work, nameserver <br>";
   }
 
@@ -37,7 +43,9 @@ app.post("/api/post/netplan", (req, res) => {
     subnet === `10.12.${elevpool}.0/24` &&
     address.includes(`10.12.${elevpool}`) &&
     gateway === `10.12.${elevpool}.1` &&
-    (nameserver.includes(`1.1.1.1`) ||nameserver.includes(`8.8.8.8`) || nameserver.includes(`10.10.1.30`)) &&
+    (nameserver.includes(`1.1.1.1`) ||
+      nameserver.includes(`8.8.8.8`) ||
+      nameserver.includes(`10.10.1.30`)) &&
     searchdomain.includes(`ikt-fag.no`)
   ) {
     successMessage += `Woho, this works <br> 
@@ -45,9 +53,9 @@ app.post("/api/post/netplan", (req, res) => {
     Address: ${address} <br> 
     Gateway: ${gateway} <br> 
     Name server: ${nameserver} <br> 
-    Search domain: ${searchdomain} <br> 
-    `
-    res.send(successMessage)
+    Search domain: ${searchdomain.toLower()} <br> 
+    `;
+    res.send(successMessage);
   } else {
     console.log("this didnt work, redo");
     res.send(message);
