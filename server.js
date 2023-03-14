@@ -52,8 +52,8 @@ app.post("/api/post/netplan", (req, res) => {
     Subnet: ${subnet} <br> 
     Address: ${address} <br> 
     Gateway: ${gateway} <br> 
-    Nameserver: ${nameserver} <br> 
-    SearchDomain: ${searchdomain} <br> 
+    Name server: ${nameserver} <br> 
+    Search domain: ${searchdomain} <br> 
     `
     res.send(successMessage)
   } else {
