@@ -1,5 +1,9 @@
 :root {
-  --background: #041d20;
+  --background: #333f41;
+  --h1: #ecf0f0;
+  --h2: #ecf0f0;
+  --p: #ecf0f0;
+
 }
 
 html {
@@ -11,16 +15,21 @@ h1 {
   /* margin-left: auto; */
   /* margin-right: auto; */
   text-align: center;
-  color: red;
+  color: var(--h1);
+}
+h2 {
+  color: var(--h2);
+  margin-left: 10px;
+  text-align: center;
 }
 
 .ipv4 {
-  color: white;
+  color: var(--p);
   margin-left: 200px;
 }
 
 p {
-  color: white;
+  color: var(--p);
 }
 
 label {
@@ -61,4 +70,12 @@ button {
 }
 
 
+p {
+  margin-left: 200px;
 
+}
+
+.answer {
+  width: 200px;
+  height: 20px;
+}

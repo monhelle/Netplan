@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <h1>Test</h1>
+
+  <h2>Query</h2>
+  <div>
+    <p>Spørsmål: <%= questions.question %></p>
+    <form action="/api/post/send-answer" method="post" autocomplete="off">
+      <label for="answer">Answer</label>
+      <input class="answer" type="text" name="answer">
+      <input type="hidden" name="id" value=<%= questions.id %>>
+      <br>
+      <button>Send</button>
+    </form>
+  </div>
+
+
+</body>
+</html>
