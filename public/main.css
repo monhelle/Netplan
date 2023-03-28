@@ -1,5 +1,6 @@
 :root {
-  --background: #fffef6;
+  --background: #fffffb;
+  /* --background: #fffef6; */
   --h1: #0011b9;
   --h2: #0011b9;
   --p: #0012b8;
@@ -90,8 +91,8 @@ button {
   margin-top: 100px;
   border: 1px solid #999999; 
   background-color: #ffff;
-  margin-left: 350px;
-  margin-right: 350px;
+  margin-left: 10vh;
+  margin-right: 10vh;
 
 }
 
