@@ -1,8 +1,8 @@
 :root {
-  --background: #333f41;
-  --h1: #ecf0f0;
-  --h2: #ecf0f0;
-  --p: #ecf0f0;
+  --background: #fffef6;
+  --h1: #0011b9;
+  --h2: #0011b9;
+  --p: #0011b9;
 
 }
 
@@ -17,7 +17,7 @@ h1 {
   text-align: center;
   color: var(--h1);
 }
-h2 {
+h2, h3 {
   color: var(--h2);
   margin-left: 10px;
   text-align: center;
@@ -70,12 +70,35 @@ button {
 }
 
 
-p {
-  margin-left: 200px;
-
-}
-
 .answer {
   width: 200px;
   height: 20px;
+}
+
+.a {
+  color: var(--p);
+}
+
+.a:active, a:-webkit-any-link {
+  color: var(--p);
+}
+
+.linuxTest {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+  border: 1px solid; 
+  background-color: #ffff;
+  margin-left: 200px;
+  margin-right: 200px;
+
+}
+
+.correct {
+  color: green
+}
+
+.false {
+  color: red;
 }

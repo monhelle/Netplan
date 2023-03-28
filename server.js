@@ -15,14 +15,15 @@ const mongodb = `mongodb+srv://${process.env.username}:${process.env.password}@c
 mongoose.connect(mongodb).then((result) => app.listen(80)).catch((err) => console.log(err))
 
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
   res.render("index");
+  next();
 });
 
 app.get("/test", async (req, res) => {
   // getQuestions();
   let questions = await getQuestions();
-  res.render("test", {questions: questions});
+  res.render("test", {questions: questions, ghj:''});
 });
 app.get("/admin", (req, res) => {
   res.render("admin");
@@ -52,13 +53,24 @@ app.post("/api/post/netplan", (req, res) => {
   checkForm(elevpool, address, gateway, nameserver, searchdomain, subnet, res);
 });
 
-app.post("/api/post/send-answer", (req, res) => {
-  let { answer, id } = req.body;
-  console.log(answer, id);
-  checkAnswer(answer);
-  res.render("test")
+app.post("/test", async (req, res) => {
+  let { answer, id, question } = req.body;
+  console.log(answer, id, question);
+  let questions = await checkAnswer(answer, id);
+  // console.log(feedback.question)
+  // console.log(feedback)
+
+  console.log('qq', questions.question)
+  if(questions.feedback === "Riktig!!") {
+
+    res.render("test", {questions: {question: questions.question}, ghj: {correct: questions.feedback, false: ''}});
+  } else {
+    res.render("test", {questions: {question: questions.question}, ghj: {correct: '', false: questions.feedback}});
+
+  }
+  
 });
-// app.listen(80);
+
 
 function checkForm(
   elevpool,
@@ -117,7 +129,7 @@ function checkForm(
 
 async function getQuestions() {
   questions = await Questions.find({});
-  console.log(questions)
+
 
   let arrayLength = questions.length;
   console.log(arrayLength)
@@ -125,6 +137,10 @@ async function getQuestions() {
   let random = Math.floor(Math.random() * arrayLength);
   console.log(random)
   let QA;
+
+  questions.forEach(element => {
+    console.log(element.question)
+  });
 
   if(!savedArray.includes(questions[random]._id)) {
     QA = {
@@ -143,6 +159,28 @@ async function getQuestions() {
 
 }
 
-async function checkAnswer(answer) {
-  
+async function checkAnswer(answer, id) {
+  let questions = await Questions.find({"_id": id});
+  console.log(questions)
+
+  let body = {
+    answer: questions[0].answer,
+    question: questions[0].question,
+    feedback: ''
+  }
+
+  if(answer === questions[0].answer) {
+    console.log("wohoooo")
+    return body = {
+      answer: questions[0].answer,
+      question: questions[0].question,
+      feedback: 'Riktig!!'
+    }
+  } else {
+    return body = {
+      answer: questions[0].answer,
+      question: questions[0].question,
+      feedback: 'Feil :('
+    }
+  }
 }

@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,21 +7,36 @@
   <title>Test</title>
   <link rel="stylesheet" href="/main.css">
 </head>
+
 <body>
   <h1>Test</h1>
+  <h2>Hvor god er du på Linux?</h2>
+  <h3>Denne testen forutsetter at man ikke er innlogget som superuser og ikke har sudorettigheter</h2>
+    <!-- <h2>Query</h2>  -->
+    <div class="linuxTest">
+      <p>Spørsmål: <%= questions.question %>
+      </p>
+      <form action="/test" method="post" autocomplete="off">
+        <label for="answer">Answer</label>
+        <input class="answer" type="text" name="answer" placeholder ="svar">
+        <input type="hidden" name="id" value=<%=questions.id %>>
+        <input type="hidden" name="question" value=<%=questions.question %>>
+        <br>
+        <div class="error">
+          <%= ghj.false %>
+        </div>
+   
 
-  <h2>Query</h2>
-  <div>
-    <p>Spørsmål: <%= questions.question %></p>
-    <form action="/api/post/send-answer" method="post" autocomplete="off">
-      <label for="answer">Answer</label>
-      <input class="answer" type="text" name="answer">
-      <input type="hidden" name="id" value=<%= questions.id %>>
-      <br>
-      <button>Send</button>
-    </form>
-  </div>
+        <div class="correct">
+      <%= ghj.correct %>
+        
+
+        </div>
+        <button>Send</button>
+      </form>
+    </div>
 
 
 </body>
+
 </html>
