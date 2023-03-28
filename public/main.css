@@ -2,7 +2,7 @@
   --background: #fffef6;
   --h1: #0011b9;
   --h2: #0011b9;
-  --p: #0011b9;
+  --p: #0012b8;
 
 }
 
@@ -88,17 +88,37 @@ button {
   align-items: center;
   flex-direction: column;
   margin-top: 100px;
-  border: 1px solid; 
+  border: 1px solid #999999; 
   background-color: #ffff;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 350px;
+  margin-right: 350px;
 
 }
 
 .correct {
+  padding-left: 10px;
+  padding-top: 10px;
   color: green
 }
 
 .false {
   color: red;
 }
+
+.question {
+  padding-left: 10px;
+}
+
+button {
+  justify-content: center;
+  background-color: var(--p);
+  width: 60px;
+  height: 30px;
+  color: white;
+}
+
+button:hover {
+  color: white;
+  background-color: #3743b6;
+}
+

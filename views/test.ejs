@@ -14,24 +14,52 @@
   <h3>Denne testen forutsetter at man ikke er innlogget som superuser og ikke har sudorettigheter</h2>
     <!-- <h2>Query</h2>  -->
     <div class="linuxTest">
-      <p>Spørsmål: <%= questions.question %>
+      <p>Spørsmål:</p>
+      <p class="question">
+        <%= questions.question %>
       </p>
       <form action="/test" method="post" autocomplete="off">
         <label for="answer">Answer</label>
-        <input class="answer" type="text" name="answer" placeholder ="svar">
+        <input class="answer" type="text" name="answer" placeholder="svar">
         <input type="hidden" name="id" value=<%=questions.id %>>
         <input type="hidden" name="question" value=<%=questions.question %>>
         <br>
         <div class="error">
           <%= ghj.false %>
         </div>
-   
+
 
         <div class="correct">
-      <%= ghj.correct %>
-        
+          <%= ghj.correct %>
 
         </div>
+
+        <script>
+          let rdirect = false;
+          let correct = document.querySelector(".correct").innerHTML.trim();
+          let error = document.querySelector(".error").innerHTML;
+
+          if (correct === "Riktig!!") {
+            rdirect = true;
+            
+          } if(correct === "Feil:(") {
+            rdirect = true;
+           
+          }
+          setTimeout(function () {
+            if(rdirect === true) {
+              window.location.replace("http://localhost/test")
+              rdirect = false;
+            }
+            }, 500);
+            // setTimeout(function () {
+            // }, 500);
+          console.log(correct)
+          console.log(error)
+
+          // console.log(ghj)
+        </script>
+
         <button>Send</button>
       </form>
     </div>
